@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiruthika Venkatesan — Senior PM, Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf8f4;--white:#ffffff;--ink:#1c1917;--s1:#f3f0ea;--s2:#eae6de;
+  --card:#ffffff;--b1:rgba(28,25,23,0.08);--b2:rgba(28,25,23,0.14);
+  --muted:rgba(28,25,23,0.5);--dim:rgba(28,25,23,0.28);
+  --violet:#5b21b6;--violet2:#7c3aed;--violet3:#ede9fe;
+  --amber:#b45309;--amber2:#fef3c7;
+  --teal:#0f766e;--teal2:#ccfbf1;
+  --coral:#be185d;--coral2:#fce7f3;
+  --serif:'Fraunces',Georgia,serif;--sans:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--b1);}
+.nl{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--ink);text-decoration:none;}
+.nl span{color:var(--violet);}
+.nr{display:flex;gap:2.25rem;list-style:none;}
+.nr a{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nr a:hover,.nr a.active{color:var(--violet);}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:52% 48%;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-10%;right:0;width:52%;height:110vh;background:var(--violet);z-index:0;}
+.hero::after{content:'';position:absolute;top:20%;right:8%;width:280px;height:280px;border-radius:50%;border:1px solid rgba(255,255,255,0.1);z-index:1;pointer-events:none;}
+
+.hl{display:flex;flex-direction:column;justify-content:center;padding:9rem 4rem 6rem 5.5rem;position:relative;z-index:2;}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet);margin-bottom:2rem;opacity:0;animation:up .7s ease .1s forwards;}
+.eyebrow::before{content:'';width:20px;height:1.5px;background:var(--violet);}
+.hero-name{font-family:var(--serif);font-size:clamp(3rem,4.5vw,4.8rem);line-height:.95;font-weight:700;color:var(--ink);margin-bottom:1.5rem;opacity:0;animation:up .7s ease .25s forwards;}
+.hero-name em{font-style:italic;font-weight:300;color:var(--violet);}
+.hero-desc{font-size:.95rem;line-height:1.85;color:var(--muted);max-width:46ch;margin-bottom:2.75rem;opacity:0;animation:up .7s ease .4s forwards;}
+.hero-desc strong{color:var(--ink);font-weight:500;}
+.hero-cta{display:flex;gap:.875rem;flex-wrap:wrap;opacity:0;animation:up .7s ease .55s forwards;}
+.btn-p{display:inline-flex;align-items:center;gap:.45rem;background:var(--violet);color:#fff;padding:.85rem 1.875rem;font-family:var(--sans);font-size:.82rem;font-weight:500;letter-spacing:.03em;text-decoration:none;border-radius:2px;transition:all .22s;}
+.btn-p:hover{background:var(--violet2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(91,33,182,.2);}
+.btn-s{display:inline-flex;align-items:center;gap:.45rem;background:transparent;color:var(--ink);padding:.85rem 1.875rem;font-family:var(--sans);font-size:.82rem;font-weight:500;letter-spacing:.03em;text-decoration:none;border:1.5px solid var(--b2);border-radius:2px;transition:all .22s;}
+.btn-s:hover{border-color:var(--violet);color:var(--violet);transform:translateY(-2px);}
+
+/* hero right - violet panel */
+.hr{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:9rem 3rem 6rem;gap:1.5rem;}
+
+.m-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:rgba(255,255,255,0.12);width:100%;opacity:0;animation:fade 1s ease .75s forwards;}
+.mc{background:rgba(255,255,255,0.08);padding:1.75rem 1.5rem;transition:background .2s;}
+.mc:hover{background:rgba(255,255,255,0.14);}
+.mn{font-family:var(--serif);font-size:2.6rem;font-weight:700;line-height:1;margin-bottom:.35rem;color:#fff;}
+.ml{font-size:.67rem;color:rgba(255,255,255,0.6);line-height:1.45;}
+
+.service-pills{width:100%;display:flex;flex-wrap:wrap;gap:.45rem;opacity:0;animation:fade 1s ease 1s forwards;}
+.sp{font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.2);padding:.28rem .62rem;border-radius:2px;transition:all .2s;}
+.sp:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.45);}
+
+.ats-card{width:100%;padding:1.25rem 1.4rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:4px;opacity:0;animation:fade 1s ease 1.15s forwards;}
+.ac-label{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:.6rem;}
+.ac-score{font-family:var(--serif);font-size:2.4rem;font-weight:700;color:#fff;line-height:1;}
+.ac-sub{font-size:.72rem;color:rgba(255,255,255,0.6);margin-top:.2rem;}
+
+/* STRIP */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--b1);border-bottom:1px solid var(--b1);background:var(--white);}
+.si{padding:2.5rem 2rem;border-right:1px solid var(--b1);transition:background .2s;}
+.si:last-child{border-right:none;}
+.si:hover{background:var(--violet3);}
+.sn{font-family:var(--serif);font-size:2.8rem;font-weight:700;line-height:1;color:var(--violet);margin-bottom:.3rem;}
+.ss{font-size:.74rem;color:var(--muted);line-height:1.5;}
+
+/* SHARED */
+section{position:relative;z-index:1;}
+.con{max-width:1120px;margin:0 auto;padding:0 3.5rem;}
+.sh{display:flex;align-items:center;gap:1.25rem;margin-bottom:3.75rem;}
+.shn{font-family:var(--mono);font-size:.58rem;color:var(--violet);letter-spacing:.14em;}
+.sht{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:var(--ink);line-height:1;}
+.shr{flex:1;height:1.5px;background:var(--b1);margin-left:.75rem;}
+
+/* EXPERIENCE */
+.exp-sec{padding:7rem 0;background:var(--white);}
+.ei{display:grid;grid-template-columns:185px 1fr;gap:3.5rem;padding:2.75rem 0;border-bottom:1px solid var(--b1);opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s;}
+.ei.vis{opacity:1;transform:translateY(0);}
+.eco{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:.35rem;}
+.edt{font-size:.7rem;color:var(--muted);margin-bottom:.6rem;}
+.ebdg{display:inline-block;font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;color:var(--violet);border:1px solid rgba(91,33,182,.25);padding:.16rem .5rem;border-radius:2px;background:var(--violet3);}
+.er{font-family:var(--serif);font-size:1.42rem;font-weight:700;line-height:1.18;color:var(--ink);margin-bottom:.85rem;}
+.ed{font-size:.85rem;color:var(--muted);line-height:1.78;margin-bottom:1.1rem;}
+.ew{display:flex;flex-wrap:wrap;gap:.4rem;}
+.wt{font-family:var(--mono);font-size:.59rem;letter-spacing:.04em;background:var(--violet3);color:var(--violet);border:1px solid rgba(91,33,182,.18);padding:.24rem .58rem;border-radius:2px;transition:all .2s;}
+.wt:hover{background:var(--violet);color:#fff;}
+
+/* PLATFORM SERVICES */
+.platform-sec{padding:7rem 0;background:var(--s1);border-top:1px solid var(--b1);border-bottom:1px solid var(--b1);}
+.pg2{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--b1);}
+.ps-card{background:var(--white);padding:2.25rem;transition:background .2s;position:relative;overflow:hidden;}
+.ps-card:hover{background:#fdfbff;}
+.ps-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--violet);opacity:0;transition:opacity .2s;}
+.ps-card:hover::before{opacity:1;}
+.ps-tag{display:inline-block;font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;background:var(--violet3);color:var(--violet);padding:.2rem .6rem;border-radius:2px;margin-bottom:.9rem;}
+.ps-title{font-size:.88rem;font-weight:500;color:var(--ink);margin-bottom:.45rem;line-height:1.3;}
+.ps-desc{font-size:.76rem;color:var(--muted);line-height:1.65;}
+.ps-metric{margin-top:.9rem;padding:.5rem .75rem;background:var(--violet3);font-family:var(--mono);font-size:.6rem;color:var(--violet);letter-spacing:.04em;}
+
+/* PROJECTS */
+.proj-sec{padding:7rem 0;background:var(--white);}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--b1);}
+.pc{background:var(--white);padding:2.75rem;position:relative;overflow:hidden;opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s,background .2s;}
+.pc.vis{opacity:1;transform:translateY(0);}
+.pc:hover{background:#fdfbff;}
+.pc::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--violet),var(--violet2),transparent);}
+.pn{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;color:var(--dim);margin-bottom:1.2rem;}
+.pt{font-family:var(--serif);font-size:1.38rem;font-weight:700;line-height:1.2;color:var(--ink);margin-bottom:.6rem;}
+.ps{font-family:var(--mono);font-size:.57rem;letter-spacing:.07em;color:var(--amber);margin-bottom:1.2rem;}
+.pd{font-size:.83rem;color:var(--muted);line-height:1.78;margin-bottom:1.75rem;}
+.pr2{border-top:1px solid var(--b1);padding-top:1.4rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.rn{font-family:var(--serif);font-size:1.75rem;font-weight:700;line-height:1;margin-bottom:.2rem;color:var(--violet);}
+.rl{font-size:.62rem;color:var(--dim);line-height:1.4;}
+
+/* SKILLS */
+.sk-sec{padding:7rem 0;background:var(--s1);}
+.sk-layout{display:grid;grid-template-columns:1fr 2.2fr;gap:5rem;align-items:start;}
+.sk-quote{font-family:var(--serif);font-size:1.5rem;font-style:italic;color:var(--ink);line-height:1.45;position:relative;padding-top:1.5rem;}
+.sk-quote::before{content:'';position:absolute;top:0;left:0;width:30px;height:2px;background:var(--violet);}
+.skg{display:flex;flex-direction:column;gap:2rem;}
+.skgl{font-family:var(--mono);font-size:.57rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:.65rem;}
+.skgt{display:flex;flex-wrap:wrap;gap:.4rem;}
+.st{font-size:.78rem;padding:.33rem .78rem;background:var(--white);color:var(--muted);border:1px solid var(--b1);border-radius:2px;transition:all .2s;cursor:default;}
+.st:hover{border-color:var(--b2);color:var(--ink);}
+.st.hi{background:var(--violet3);color:var(--violet);border-color:rgba(91,33,182,.22);font-weight:500;}
+.st.hi:hover{background:var(--violet);color:#fff;border-color:var(--violet);}
+
+/* EDU */
+.edu-sec{padding:5rem 0;background:var(--white);border-top:1px solid var(--b1);}
+.edu-g{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--b1);}
+.ec{background:var(--white);padding:2.25rem;transition:all .2s;border-left:3px solid transparent;}
+.ec:hover{background:var(--violet3);border-left-color:var(--violet);}
+.ed2{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--ink);margin-bottom:.28rem;}
+.es{font-size:.78rem;color:var(--muted);margin-bottom:.85rem;}
+.er2{display:flex;gap:1.5rem;}
+.eg{font-family:var(--mono);font-size:.62rem;color:var(--violet);letter-spacing:.08em;font-weight:500;}
+.edt2{font-family:var(--mono);font-size:.62rem;color:var(--dim);letter-spacing:.06em;}
+
+/* CONTACT */
+.ct-sec{padding:8rem 0;text-align:center;background:var(--violet);position:relative;overflow:hidden;}
+.ct-sec::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,.05);}
+.ct-sec::after{content:'';position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.04);}
+.ct-ey{font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;gap:.75rem;position:relative;z-index:1;}
+.ct-ey::before,.ct-ey::after{content:'';display:inline-block;width:28px;height:1px;background:rgba(255,255,255,.4);}
+.ct-h{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4rem);font-weight:700;color:#fff;line-height:1.05;margin-bottom:1rem;position:relative;z-index:1;}
+.ct-h em{font-style:italic;font-weight:300;opacity:.85;}
+.ct-sub{font-size:.88rem;color:rgba(255,255,255,.6);margin-bottom:3rem;position:relative;z-index:1;}
+.ct-links{display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap;position:relative;z-index:1;}
+.cl{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:rgba(255,255,255,.75);text-decoration:none;padding:.7rem 1.4rem;border:1px solid rgba(255,255,255,.25);border-radius:2px;transition:all .2s;}
+.cl:hover{color:#fff;border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.1);}
+
+footer{background:#3b0f7a;border-top:1px solid rgba(255,255,255,.1);padding:1.35rem 3.5rem;display:flex;justify-content:space-between;align-items:center;}
+.fn{font-family:var(--serif);font-size:.88rem;color:rgba(255,255,255,.4);font-style:italic;}
+.fr{font-family:var(--mono);font-size:.55rem;letter-spacing:.08em;color:rgba(255,255,255,.25);}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fade{from{opacity:0;}to{opacity:1;}}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--b2);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nl">K<span>.</span>Venkatesan</a>
+  <ul class="nr">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#platform">Platform</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hl">
+    <p class="eyebrow">Senior PM · Platform Infrastructure · San Francisco, CA</p>
+    <h1 class="hero-name">Kiruthika<br><em>Venkatesan</em></h1>
+    <p class="hero-desc">
+      Building the <strong>platform layer that every product runs on</strong> — fulfillment engines, identity services, auto-pay, biller gateways, and agentic contracts. 5+ years shipping APIs and shared services across multiple product teams, with <strong>SLA contracts, error budgets, and zero-coupling versioning strategies.</strong>
+    </p>
+    <div class="hero-cta">
+      <a href="#platform" class="btn-p">Platform Services →</a>
+      <a href="#contact" class="btn-s">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hr">
+    <div class="m-grid">
+      <div class="mc"><div class="mn">84%</div><div class="ml">Platform adoption across all consuming product teams · 6 months</div></div>
+      <div class="mc"><div class="mn">93</div><div class="ml">ATS score — highest across 5 simultaneous role applications</div></div>
+      <div class="mc"><div class="mn">0</div><div class="ml">Compliance violations across all platform releases</div></div>
+      <div class="mc"><div class="mn">79%</div><div class="ml">MTTR improvement · platform observability & SLA framework</div></div>
+    </div>
+    <div class="service-pills">
+      <span class="sp">Fulfillment Engine</span>
+      <span class="sp">Biller Gateway</span>
+      <span class="sp">Identity Service</span>
+      <span class="sp">Auto-pay</span>
+      <span class="sp">Customer Tagging</span>
+      <span class="sp">Agentic Contracts</span>
+      <span class="sp">SLA / Error Budgets</span>
+      <span class="sp">API Versioning</span>
+    </div>
+    <div class="ats-card">
+      <div class="ac-label">ATS keyword match — platform PM vocabulary</div>
+      <div class="ac-score">93 / 100</div>
+      <div class="ac-sub">All 9 platform responsibilities covered · Highest match of 5 active applications</div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="si"><div class="sn">9</div><div class="ss">Of 9 platform responsibilities explicitly covered — fulfillment, identity, auto-pay, biller gateway, tagging, agentic, scale, observability, stakeholder</div></div>
+  <div class="si"><div class="sn">12+</div><div class="ss">Product teams consuming shared platform services and API contracts</div></div>
+  <div class="si"><div class="sn">44%</div><div class="ss">Fulfillment reliability improvement · biller gateway abstraction platform</div></div>
+  <div class="si"><div class="sn">3</div><div class="ss">Product verticals served by shared platform architecture with zero breaking changes</div></div>
+</div>
+
+<section class="exp-sec" id="experience">
+  <div class="con">
+    <div class="sh"><span class="shn">01</span><h2 class="sht">Experience</h2><div class="shr"></div></div>
+
+    <div class="ei">
+      <div>
+        <div class="eco">FINRA USA</div>
+        <div class="edt">May 2025 – Sep 2025</div>
+        <div class="ebdg">PM Intern · Payments Platform</div>
+      </div>
+      <div>
+        <div class="er">Platform PM Intern<br>Payments Platform & Fulfillment Infrastructure</div>
+        <p class="ed">Owned roadmap for fulfillment engine configuring payment processing across product types — defined exception-handling flows for portal failures, partial payment settlement mismatches, and edge-case recovery. Extended identity service with canonical customer graph, deduplication logic, and tombstone record handling. Defined platform observability framework with SLA targets and error budgets per service. Established agentic data contracts making platform the source of truth for CS agent context.</p>
+        <div class="ew">
+          <span class="wt">SLA contracts + recovery playbooks</span>
+          <span class="wt">↑34% fulfillment reliability</span>
+          <span class="wt">↓73% false positives</span>
+          <span class="wt">↓79% MTTR</span>
+          <span class="wt">0 compliance violations</span>
+          <span class="wt">Agentic data contracts</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ei">
+      <div>
+        <div class="eco">Cognizant</div>
+        <div class="edt">Jul 2021 – Aug 2024</div>
+        <div class="ebdg">Full-time · 3 yrs</div>
+      </div>
+      <div>
+        <div class="er">Senior Product Manager<br>Payments Platform & Biller Infrastructure</div>
+        <p class="ed">Owned end-to-end roadmap for payments fulfillment platform across two-sided payment networks — designed biller gateway abstraction layer decoupling fulfillment from portal-specific integrations. Designed auto-pay configurability for multi-bill flows with mixed due dates, variable bill amounts, payment method fallback, and consent/mandate model. Owned customer tagging and event-sourced state management service as shared source of truth. Drove multi-vertical API contracts, ownership boundaries, and versioning strategies with minimal coupling.</p>
+        <div class="ew">
+          <span class="wt">Biller gateway abstraction</span>
+          <span class="wt">Auto-pay · multi-bill flows</span>
+          <span class="wt">Event-sourced state mgmt</span>
+          <span class="wt">84% platform adoption</span>
+          <span class="wt">API contracts · versioning</span>
+          <span class="wt">3 verticals · 0 breaking changes</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ei">
+      <div>
+        <div class="eco">Cognizant</div>
+        <div class="edt">Jun 2020 – Jul 2021</div>
+        <div class="ebdg">Full-time · 1 yr</div>
+      </div>
+      <div>
+        <div class="er">Associate Product Manager<br>Payments Risk & Platform Infrastructure</div>
+        <p class="ed">Identified through customer discovery that 43% of consumers experienced payment fulfillment failures from miscalibrated exception-handling logic. Owned platform requirements definition, defined exception flows for partial payments and settlement mismatches, partnered with engineering on API design for payment method fallback. Built platform observability framework surfacing failure patterns proactively. Developed RESTful API services with data modeling for payment state machines.</p>
+        <div class="ew">
+          <span class="wt">↓29% fulfillment failures</span>
+          <span class="wt">Exception flow design</span>
+          <span class="wt">Payment state machines</span>
+          <span class="wt">↑20% deploy reliability</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="platform-sec" id="platform">
+  <div class="con">
+    <div class="sh"><span class="shn">02</span><h2 class="sht">Platform Services Owned</h2><div class="shr"></div></div>
+    <div class="pg2">
+
+      <div class="ps-card">
+        <div class="ps-tag">Fulfillment</div>
+        <div class="ps-title">Fulfillment Engine & Exception Handling</div>
+        <div class="ps-desc">Owned roadmap for configurable fulfillment engine across product types — defined exception-handling flows for portal failures, partial payments, and settlement mismatches; established SLA contracts with clear failure recovery playbooks.</div>
+        <div class="ps-metric">↑34% reliability · ↓23% QoQ settlement failures</div>
+      </div>
+
+      <div class="ps-card">
+        <div class="ps-tag">Identity</div>
+        <div class="ps-title">Identity Service & Customer Graph</div>
+        <div class="ps-desc">Extended identity service to support new acquisition channels — defined canonical customer graph with deduplication logic, merge logic, tombstone records, and lifecycle state transitions across all customer flows.</div>
+        <div class="ps-metric">↓73% false positives · identity accuracy improved 36%</div>
+      </div>
+
+      <div class="ps-card">
+        <div class="ps-tag">Auto-pay</div>
+        <div class="ps-title">Auto-pay Configurability · Multi-bill Flows</div>
+        <div class="ps-desc">Designed durable, configurable auto-pay service for multi-bill payment flows — defined payment schedule logic managing mixed due dates, variable bill amounts, payment method fallback, and consent/mandate model for recurring authorization.</div>
+        <div class="ps-metric">↓38% manual workflows · ↓28% authorization failures</div>
+      </div>
+
+      <div class="ps-card">
+        <div class="ps-tag">Biller Gateway</div>
+        <div class="ps-title">Biller Gateway Abstraction Layer</div>
+        <div class="ps-desc">Defined routing abstraction layer decoupling fulfillment from portal-specific integrations — standardized how payment instructions flow to current and new biller types, enabling rapid vertical expansion without hardcoded logic.</div>
+        <div class="ps-metric">1-in-31 failure rate (from 1-in-6) · ↑44% fulfillment reliability</div>
+      </div>
+
+      <div class="ps-card">
+        <div class="ps-tag">State Management</div>
+        <div class="ps-title">Customer Tagging & Event-sourced State</div>
+        <div class="ps-desc">Owned tagging and segmentation service — defined event-sourced state transitions powering downstream eligibility, routing, and risk logic; established data contract between platform and product layers making customer state a shared source of truth.</div>
+        <div class="ps-metric">12+ consuming teams · 4 releases 100% on time</div>
+      </div>
+
+      <div class="ps-card">
+        <div class="ps-tag">Agentic</div>
+        <div class="ps-title">Agentic Contracts · Real-time State APIs</div>
+        <div class="ps-desc">Defined platform data contracts and event streams powering agent-accessible customer and fulfillment context — made platform services the source of truth for agentic tooling consumed by CS operations in real time.</div>
+        <div class="ps-metric">0 compliance violations · any state traceable &lt;2 min</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="proj-sec" id="projects">
+  <div class="con">
+    <div class="sh"><span class="shn">03</span><h2 class="sht">Key Projects</h2><div class="shr"></div></div>
+    <div class="proj-grid">
+      <div class="pc">
+        <div class="pn">PROJECT 01 / 02</div>
+        <h3 class="pt">Payments Fulfillment & Biller Gateway Platform</h3>
+        <div class="ps">18 MONTHS · LEAD PM · REST APIs · EVENT SOURCING · PYTHON · SQL · CI/CD · CLOUD</div>
+        <p class="pd">Payment teams across verticals built portal-specific fulfillment logic independently — creating 23% QoQ growth in settlement failures. Owned platform roadmap: defined biller gateway abstraction layer, designed exception-handling flows for partial payments and portal failures, established SLA contracts with clear recovery playbooks, and drove API contract definitions with versioning strategies. Made fulfillment platform the shared source of truth across all product verticals.</p>
+        <div class="pr2">
+          <div><div class="rn">44%</div><div class="rl">Fulfillment reliability improvement</div></div>
+          <div><div class="rn">41%</div><div class="rl">Manual exception workflows cut</div></div>
+          <div><div class="rn">1-in-31</div><div class="rl">Settlement failure rate (from 1-in-6)</div></div>
+          <div><div class="rn">3</div><div class="rl">Verticals on shared platform · 0 breaking changes</div></div>
+        </div>
+      </div>
+      <div class="pc">
+        <div class="pn">PROJECT 02 / 02</div>
+        <h3 class="pt">Identity & Auto-Pay Configuration Platform for Multi-Vertical Expansion</h3>
+        <div class="ps">10 MONTHS · PM · REST APIs · EVENT STREAMS · PYTHON · SQL · DATA MODELING</div>
+        <p class="pd">Expanding into new payment verticals exposed gaps in identity deduplication and auto-pay configurability — duplicate records, failed mandate authorizations, and broken payment schedules across mixed due dates. Defined canonical customer graph with deduplication, merge logic, and tombstone records; designed auto-pay with payment method fallback and consent model; established agentic data contracts for real-time identity and fulfillment state.</p>
+        <div class="pr2">
+          <div><div class="rn">36%</div><div class="rl">Identity resolution accuracy improved</div></div>
+          <div><div class="rn">28%</div><div class="rl">Auto-pay authorization failures reduced</div></div>
+          <div><div class="rn">100%</div><div class="rl">Duplicate records eliminated</div></div>
+          <div><div class="rn">&lt;2min</div><div class="rl">Any customer state traceable</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sk-sec" id="skills">
+  <div class="con">
+    <div class="sh"><span class="shn">04</span><h2 class="sht">Skills & Stack</h2><div class="shr"></div></div>
+    <div class="sk-layout">
+      <div>
+        <p class="sk-quote">"The decisions you make here create or remove optionality for every squad."</p>
+      </div>
+      <div class="skg">
+        <div>
+          <div class="skgl">Platform PM</div>
+          <div class="skgt">
+            <span class="st hi">Fulfillment Engine</span>
+            <span class="st hi">Biller Gateway</span>
+            <span class="st hi">Identity Service</span>
+            <span class="st hi">Auto-pay Configurability</span>
+            <span class="st hi">Customer Tagging</span>
+            <span class="st hi">SLA / Error Budgets</span>
+            <span class="st hi">API Contracts</span>
+            <span class="st hi">Versioning Strategy</span>
+            <span class="st">Platform Observability</span>
+          </div>
+        </div>
+        <div>
+          <div class="skgl">Payments & FinTech</div>
+          <div class="skgt">
+            <span class="st hi">Multi-bill Payment Flows</span>
+            <span class="st hi">Payment Method Fallback</span>
+            <span class="st hi">Consent & Mandate Models</span>
+            <span class="st hi">Settlement & Exception Handling</span>
+            <span class="st">Recurring Authorization</span>
+            <span class="st">Payment State Machines</span>
+          </div>
+        </div>
+        <div>
+          <div class="skgl">Technical</div>
+          <div class="skgt">
+            <span class="st hi">REST APIs</span>
+            <span class="st hi">Event Sourcing</span>
+            <span class="st hi">Agentic Contracts</span>
+            <span class="st hi">Data Modeling</span>
+            <span class="st">API Design</span>
+            <span class="st">Systems Architecture</span>
+            <span class="st">Python · SQL</span>
+            <span class="st">CI/CD · Docker</span>
+            <span class="st">Event Streams</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="edu-sec">
+  <div class="con">
+    <div class="sh"><span class="shn">05</span><h2 class="sht">Education</h2><div class="shr"></div></div>
+    <div class="edu-g">
+      <div class="ec">
+        <div class="ed2">Master of Science — Information Technology</div>
+        <div class="es">University of Denver · Currently enrolled</div>
+        <div class="er2"><span class="eg">GPA 3.97 / 4.0</span><span class="edt2">Aug 2024 – May 2026</span></div>
+      </div>
+      <div class="ec">
+        <div class="ed2">Bachelor of Engineering — Computer Science</div>
+        <div class="es">Anna University</div>
+        <div class="er2"><span class="eg">GPA 3.8 / 4.0</span><span class="edt2">Aug 2017 – May 2021</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ct-sec" id="contact">
+  <div class="con">
+    <div class="ct-ey">Open to opportunities</div>
+    <h2 class="ct-h">Let's build platform services that<br><em>every product depends on.</em></h2>
+    <p class="ct-sub">Available for Senior PM roles in Platform Infrastructure & Payments · San Francisco, CA</p>
+    <div class="ct-links">
+      <a href="mailto:kiruthikavenkat2704@gmail.com" class="cl">✉ &nbsp;kiruthikavenkat2704@gmail.com</a>
+      <a href="tel:+17208135590" class="cl">✆ &nbsp;(720) 813-5590</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="fn">Kiruthika Venkatesan</span>
+  <span class="fr">Senior PM · Platform Infrastructure · Portfolio 2026</span>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('vis'),i*90);});
+},{threshold:.07});
+document.querySelectorAll('.ei,.pc').forEach(el=>obs.observe(el));
+const secs=document.querySelectorAll('section[id]');
+const links=document.querySelectorAll('.nr a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-150)cur=s.id;});
+  links.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+});
+</script>
+</body>
+</html>
